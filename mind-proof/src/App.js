@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       //<MainPage />
-      //<Profile />
+      // <Profile />
       <PostCreationPage />
     );
   }
