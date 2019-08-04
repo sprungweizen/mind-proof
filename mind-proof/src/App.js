@@ -5,13 +5,14 @@ import './App.css';
 import MainPageHeader from "./components/main_page/MainPageHeader";
 import MainPageBodyContent from "./components/main_page/MainPageBodyContent";
 import MainProfilePage from "./components/profile_page/MainProfilePage";
-
+import PostCreationPage from "./components/post_creation_page/PostCreationPage";
 
 class App extends Component {
   render() {
     return (
       //<MainPage />
-      <Profile />
+      //<Profile />
+      <PostCreationPage />
     );
   }
 }
@@ -32,6 +33,7 @@ const Profile = () => {
     <MainProfilePage />
   );
 }
+
 
 const Routing = () => {
   return(

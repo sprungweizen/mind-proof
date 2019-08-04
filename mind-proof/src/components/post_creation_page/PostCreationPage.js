@@ -1,19 +1,24 @@
 import React from "react";
 import TitleTextField from "TitleTextField";
 
-state = {
-    previewOn: false
+
+
+class PostCreationPage extends React.Component
+{
+    state = {
+        previewOn: false
+    }
+
+    render(){
+        return(
+            <div id={ 'post-creation-page' }>
+                <TitleTextField />
+            </div>
+        );
+    };
 }
 
 
-const PostCreationPage = () => {
-    return(
-        <div>
-            <TitleTextField />
-            
-        </div>
-    );
-}
 
 
 
