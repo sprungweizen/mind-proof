@@ -4,26 +4,23 @@
 from django.test import TestCase
 #this import is ugly and needs to be replaced once we introduce CD mechanisms as it will only work in deployment
 from ..models import Post
-import time
+from ..tests import base
+from ..tests.base import UnitTest
+from django.contrib.auth import get_user_model
 import multiprocessing
 
-#helper methods
-def get_dummy_post(title):
-    post = Post()
-    post.title = title #pk and identifier, hence hardcoded
-    #as Image Field is nullable, this field will be null by default
-    post.article = "Hello I am a dummy post"
-    post.date_added = time.time()
-    post.save()
+User = get_user_model
+
+
 
 #test whether backend (including the database layer) can handle more than one request at the same time without throwing an error
-class TestLoadManagement(TestCase):
+class TestLoadManagement(TestCase, UnitTest):
 
     def test_can_process_two_requests_at_the_same_time(self):
         def process1():
-            get_dummy_post("the first post")
+            super().get_dummy_post("the first post")
         def process2():
-            get_dummy_post("the second post")
+            super().get_dummy_post("the second post")
         p1 = multiprocessing.Process(target=process1)
         p2 = multiprocessing.Process(target=process2)
         #should not raise
